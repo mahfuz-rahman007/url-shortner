@@ -5,11 +5,11 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UrlShortenerController;
 
 Route::get('/', function () {
-    return redirect('/login');
+    return view('shortener-url.form');
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return redirect('/shortener-url/list');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -19,19 +19,13 @@ Route::middleware('auth')->group(function () {
 
     // Url Routes
     Route::get('/shortener-url/list', [UrlShortenerController::class, 'shortenerUrlList'])->name('url.list');
-
-    Route::post('/shortener-url/form', [UrlShortenerController::class, 'store'])->name('url.form');
-
-    Route::post('/shortener-url/store', [UrlShortenerController::class, 'store'])->name('url.store');
-
-    Route::get('/shortener-url/{urlShortener}/edit', [UrlShortenerController::class, 'edit'])->name('url.edit');
-    Route::put('/shortener-url/{urlShortener}/update', [UrlShortenerController::class, 'update'])->name('url.update');
     Route::delete('/shortener-url/{urlShortener}/destroy', [UrlShortenerController::class, 'destroy'])->name('url.destroy');
-
-
 });
 
 require __DIR__.'/auth.php';
+
+// Store Shortened URL
+Route::post('/shortener-url/store', [UrlShortenerController::class, 'store'])->name('url.store');
 
 // Redirect to original URL when accessing shortened URL
 Route::get('/{urlShortener:slug}', [UrlShortenerController::class, 'redirectUrl'])->name('url.redirect');
