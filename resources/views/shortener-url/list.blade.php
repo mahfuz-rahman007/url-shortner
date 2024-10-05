@@ -50,10 +50,6 @@
                                                     {{-- Link edit and delete button --}}
                                                     <div class="flex justify-end">
                                                         <div class="flex gap-2">
-                                                            <a href="{{ route('url.edit', $url->id) }}">
-                                                                <button
-                                                                    class="text-blue-500 hover:text-blue-700 mr-2">Edit</button>
-                                                            </a>
                                                             <form action="{{ route('url.destroy', $url->id) }}" class="deleteForm"
                                                                 method="POST">
                                                                 @csrf
