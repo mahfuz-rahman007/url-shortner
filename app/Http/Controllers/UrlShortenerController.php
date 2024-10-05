@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Str;
 use App\Models\UrlShortener;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -25,7 +26,7 @@ class UrlShortenerController extends Controller
      */
     public function shortenerUrlList()
     {
-        $urls = UrlShortener::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(20);
+        $urls = UrlShortener::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(15);
         return view('shortener-url.list', compact('urls'));
     }
 
@@ -35,38 +36,25 @@ class UrlShortenerController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'url' => 'required|url',
-        ]); 
+            'original_url' => 'required|url',
+        ],[
+            'original_url.url' => "Your long URL must be a valid URL"
+        ]);
 
-        $url = new UrlShortener();
-        $url->url = $request->url;
-        $url->user_id = Auth::user()->id;
-        $url->save();  
-
-        return redirect(route('url.list'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(UrlShortener $urlShortener)
-    {
-        return view('shortener-url.edit', compact('urlShortener'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, UrlShortener $urlShortener)
-    {
-        $request->validate([
-            'url' => 'required|url',
-        ]); 
-
-        $urlShortener->url = $request->url; 
-        $urlShortener->save();  
-
-        return redirect(route('url.list'));
+        try {
+            $slug = $this->generateSlug();
+            
+            UrlShortener::create([
+                'user_id' => Auth::user() ? Auth::user()->id : null,
+                'original_url' => $request->original_url,
+                'slug' => $slug
+            ]);
+    
+            return redirect()->back()->with('shortener-url', $slug);
+            
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors('Url Shortened Failed');
+        }
     }
 
     /**
@@ -76,5 +64,20 @@ class UrlShortenerController extends Controller
     {
         $urlShortener->delete();
         return redirect(route('url.list'));
-    }  
+    }
+
+    
+    /**
+     * Generate a unique 8 character slug
+     */
+    private function generateSlug()
+    {
+        $slug = Str::random(6);
+
+        if(UrlShortener::where('slug', $slug)->exists()) {
+            $this->generateSlug();
+        }
+
+        return $slug;
+    }
 }
