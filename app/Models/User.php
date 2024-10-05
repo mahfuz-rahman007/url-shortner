@@ -44,4 +44,12 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    /**
+     * Get the urls that the user has shortened.
+     */
+    public function urlShortener()
+    {
+        return $this->hasMany(UrlShortener::class);
+    }
 }
