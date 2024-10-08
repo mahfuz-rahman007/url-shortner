@@ -29,7 +29,7 @@
     </style>
 </head>
 
-<body class="font-sans text-gray-900 antialiased bg-gray-100 bg-gray-900">
+<body class="font-sans text-gray-900 antialiased bg-gray-100">
 
     <div class="relative w-3/4 mx-auto px-6">
         <header class="grid grid-cols-1 items-center gap-2 py-10 lg:grid-cols-1">
