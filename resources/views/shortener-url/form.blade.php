@@ -96,6 +96,17 @@
         </div>
     </div>
 
+    <footer class="text-center mt-6">
+        <p class="text-sm text-gray-600 text-gray-400">
+            Developed By 
+            <a href="https://github.com/mahfuz-rahman007" target="_blank" class="text-blue-500">Mahfujur Rahman</a>
+            @2024
+        </p>
+        <p class="text-sm text-gray-600 text-gray-400">
+            <a href="https://www.linkedin.com/in/mahfuzur-rahman-44723728a/" target="_blank" class="text-blue-500">LinkedIn</a>
+        </p>
+    </footer>
+
     <script>
         // Copy Short Url to Clipboard
         function copyToClipboard() {
