@@ -42,7 +42,7 @@
                                         <tbody class="divide-y divide-gray-200">
                                             @foreach ($urls as $url)
                                                 <tr
-                                                    class="odd:bg-white even:bg-gray-100 hover:bg-gray-100 odd:bg-neutral-800 even:bg-neutral-700 hover:bg-neutral-700">
+                                                    class="odd:bg-white even:bg-gray-100 hover:bg-gray-100">
                                                     <td class="px-6 py-4 text-sm">
                                                         {{ ($urls->currentpage() - 1) * $urls->perpage() + $loop->iteration }}
                                                     </td>

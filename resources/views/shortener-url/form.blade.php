@@ -85,7 +85,7 @@
                         <x-text-input id="short_url" class="block w-full" type="text" name="short_url"
                             value="{{  url('/') . '/' . session('shortener-url') }}" readonly />
                         <button
-                            class="active:bg-gray-300 active:bg-gray-900 bg-gray-200 bg-gray-800 border border-transparent duration-150 ease-in-out font-semibold hover:bg-gray-700 hover:bg-white inline-flex items-center ml-2 px-4 py-2 rounded-md text-gray-800 text-white text-xs tracking-widest transition uppercase ml-2"
+                            class="active:bg-gray-300 active:bg-gray-900 bg-gray-200 bg-gray-800 border border-transparent duration-150 ease-in-out font-semibold hover:bg-gray-700 inline-flex items-center ml-2 px-4 py-2 rounded-md text-gray-800 text-white text-xs tracking-widest transition uppercase ml-2"
                             onclick="copyToClipboard()">
                             Copy
                         </button>
