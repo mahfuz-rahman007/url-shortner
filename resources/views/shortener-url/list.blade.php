@@ -16,7 +16,7 @@
                                 <p class="py-12 text-center text-gray-400">No shortened URLs found.</p>
                             @else
                                 <div class="overflow-hidden">
-                                    <table class="min-w-full divide-y divide-gray-200">
+                                    <table class="table-auto min-w-full divide-y divide-gray-200">
                                         <thead>
                                             <tr>
                                                 <th scope="col"
@@ -26,13 +26,13 @@
                                                     class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
                                                     New Url</th>
                                                 <th scope="col"
-                                                    class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
+                                                    class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase max-w-md">
                                                     Old Url</th>
                                                 <th scope="col"
-                                                    class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase">
+                                                    class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">
                                                     Clicks</th>
                                                 <th scope="col"
-                                                    class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase">
+                                                    class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">
                                                     Last Visited</th>
                                                 <th scope="col"
                                                     class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase">
@@ -50,9 +50,9 @@
                                                         <a href="{{ url('/') . '/' . $url->slug }}" target="_blank"
                                                             rel="noopener noreferrer">{{ url('/') . '/' . $url->slug }}</a>
                                                     </td>
-                                                    <td class="px-6 py-4 text-sm">{{ $url->original_url }}</td>
-                                                    <td class="px-6 py-4 text-sm">{{ $url->clicks }}</td>
-                                                    <td class="px-6 py-4 text-sm">
+                                                    <td class="px-6 py-4 text-sm max-w-md break-words">{{ $url->original_url }}</td>
+                                                    <td class="px-6 py-4 text-sm text-center">{{ $url->clicks }}</td>
+                                                    <td class="px-6 py-4 text-sm text-center">
                                                         {{ $url->last_clicked_at ? $url->last_clicked_at->diffForHumans() : 'Not Visited' }}
                                                     </td>
                                                     <td class="px-6 py-4 text-sm">
