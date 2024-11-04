@@ -16,6 +16,6 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->count(20)->has(UrlShortener::factory()->count(1000))->create();
+        User::factory()->count(20)->has(UrlShortener::factory()->count(100))->create();
     }
 }
