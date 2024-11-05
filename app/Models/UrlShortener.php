@@ -24,7 +24,8 @@ class UrlShortener extends Model
     protected function casts(): array
     {
         return [
-            'last_clicked_at' => 'datetime:Y-m-d'
+            'last_clicked_at' => 'datetime:Y-m-d',
+            'created_at' => 'datetime:d M Y'
         ];
     }
 

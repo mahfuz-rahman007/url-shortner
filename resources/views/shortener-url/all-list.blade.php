@@ -37,6 +37,9 @@
                                                 <th scope="col"
                                                     class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">
                                                     Last Visited</th>
+                                                    <th scope="col"
+                                                    class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">
+                                                    Created At</th>
                                                 <th scope="col"
                                                     class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase">
                                                     Action</th>
@@ -60,6 +63,9 @@
                                                     <td class="px-6 py-4 text-sm text-center">{{ $url->clicks }}</td>
                                                     <td class="px-6 py-4 text-sm text-center">
                                                         {{ $url->last_clicked_at ? $url->last_clicked_at->diffForHumans() : 'Not Visited' }}
+                                                    </td>
+                                                    <td class="px-6 py-4 text-sm">
+                                                        {{ $url->created_at }}
                                                     </td>
                                                     <td class="px-6 py-4 text-sm">
                                                         {{-- Link edit and delete button --}}
