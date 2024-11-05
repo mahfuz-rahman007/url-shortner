@@ -50,7 +50,7 @@
                                                         {{ ($urls->currentpage() - 1) * $urls->perpage() + $loop->iteration }}
                                                     </td>
                                                     <td class="px-6 py-4 text-sm">
-                                                        {{ $url->user->name }}
+                                                        {{ $url->user ? $url->user->name : 'Unknown' }}
                                                     </td>
                                                     <td class="px-6 py-4 text-sm">
                                                         <a href="{{ url('/') . '/' . $url->slug }}" target="_blank"
