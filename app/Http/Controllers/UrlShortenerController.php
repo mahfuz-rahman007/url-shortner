@@ -26,7 +26,7 @@ class UrlShortenerController extends Controller
      */
     public function allShortenerUrlList()
     {
-        $urls = UrlShortener::with('user')->where('user_id', '!=', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(15);
+        $urls = UrlShortener::where('user_id', '!=', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(15);
         return view('shortener-url.all-list', compact('urls'));
     }
 
