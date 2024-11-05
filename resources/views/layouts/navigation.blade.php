@@ -17,6 +17,15 @@
                     </x-nav-link>
                 </div>
 
+                <!-- All Shortener List Links -->
+                @if (Auth::user()->email == 'admin@admin.com')
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('url.all')" :active="request()->routeIs('url.all')">
+                            {{ __('All Shortened Url List') }}
+                        </x-nav-link>
+                    </div>
+                @endif
+
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="'/'" :active="false">

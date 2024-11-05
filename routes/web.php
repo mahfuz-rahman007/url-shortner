@@ -19,6 +19,9 @@ Route::middleware('auth')->group(function () {
 
     // Url Routes
     Route::get('/shortener-url/list', [UrlShortenerController::class, 'shortenerUrlList'])->name('url.list');
+    
+    Route::get('/shortener-url/all', [UrlShortenerController::class, 'allShortenerUrlList'])->name('url.all');
+
     Route::delete('/shortener-url/{urlShortener}/destroy', [UrlShortenerController::class, 'destroy'])->name('url.destroy');
 });
 
