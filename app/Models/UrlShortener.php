@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Traits\HasSlug;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class UrlShortener extends Model
@@ -35,6 +36,17 @@ class UrlShortener extends Model
         return [
             'last_clicked_at' => 'datetime:Y-m-d',
             'clicks' => 'integer',
+            'created_at' => 'datetime:d M Y'
         ];
+    }
+
+    /**
+     * Get the user that owns the URL.
+     */
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class)->withDefault([
+            'name' => 'Unknown'
+        ]);
     }
 }

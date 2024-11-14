@@ -22,6 +22,15 @@ class UrlShortenerController extends Controller
     }
 
     /**
+     * List all shortened URLs created by all users except the current user.
+     */
+    public function allShortenerUrlList()
+    {
+        $urls = UrlShortener::orderBy('created_at', 'desc')->paginate(15);
+        return view('shortener-url.all-list', compact('urls'));
+    }
+
+    /**
      * List all shortened URLs created by the current user.
      */
     public function shortenerUrlList()
