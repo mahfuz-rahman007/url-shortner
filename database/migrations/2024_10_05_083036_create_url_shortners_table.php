@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,11 +14,11 @@ return new class extends Migration
     {
         Schema::create('url_shorteners', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade')->onUpdate('cascade');
-            $table->string('slug')->unique();
-            $table->string('original_url');
-            $table->integer('clicks')->default(0);
-            $table->timestamp('last_clicked_at')->nullable();
+            $table->foreignIdFor(User::class)->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->string('slug')->unique()->index();
+            $table->text('original_url')->fulltext();
+            $table->unsignedInteger('clicks')->default(0)->index();
+            $table->timestamp('last_clicked_at')->nullable()->index();
             $table->timestamps();
         });
     }

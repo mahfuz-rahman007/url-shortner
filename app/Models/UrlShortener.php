@@ -2,19 +2,29 @@
 
 namespace App\Models;
 
+use App\Traits\HasSlug;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class UrlShortener extends Model
 {
-    use HasFactory;
+    use HasFactory, HasSlug;
 
-    protected $fillable = [
-        'user_id',
-        'slug',
-        'original_url',
-    ];
+    /**
+     * The source column for the slug.
+     *
+     * @var string
+     */
+    protected $slugSourceColumn = '';
+
+    /**
+     * The attributes that aren't mass assignable.
+     *
+     * @var array
+     */
+    protected $guarded = [];
 
     /**
      * Get the attributes that should be cast.
@@ -25,6 +35,7 @@ class UrlShortener extends Model
     {
         return [
             'last_clicked_at' => 'datetime:Y-m-d',
+            'clicks' => 'integer',
             'created_at' => 'datetime:d M Y'
         ];
     }

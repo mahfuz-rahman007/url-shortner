@@ -59,7 +59,7 @@
             <h1 class="text-center mb-3 text-2xl">URL Shortener</h1>
         </div>
 
-        <div class="w-full sm:max-w-2xl mt-6 px-6 py-10 bg-white bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
+        <div class="w-full sm:max-w-2xl mt-6 px-6 py-10 bg-white shadow-md overflow-hidden sm:rounded-lg">
             <x-auth-session-status class="mb-4" :status="session('status')" />
 
             <form method="POST" action="{{ route('url.store') }}">
@@ -83,9 +83,9 @@
                     <x-input-label for="short_url" :value="__('Generated Short URL')" />
                     <div class="mt-4 flex items-center gap-3">
                         <x-text-input id="short_url" class="block w-full" type="text" name="short_url"
-                            value="{{  url('/') . '/' . session('shortener-url') }}" readonly />
+                            value="{{ url('/') . '/' . session('shortener-url') }}" readonly />
                         <button
-                            class="active:bg-gray-300 active:bg-gray-900 bg-gray-200 bg-gray-800 border border-transparent duration-150 ease-in-out font-semibold hover:bg-gray-700 inline-flex items-center ml-2 px-4 py-2 rounded-md text-gray-800 text-white text-xs tracking-widest transition uppercase ml-2"
+                            class="active:bg-gray-300 bg-gray-200 border border-transparent duration-150 ease-in-out font-semibold hover:bg-gray-700 inline-flex items-center ml-2 px-4 py-2 rounded-md text-gray-800 text-xs tracking-widest transition uppercase"
                             onclick="copyToClipboard()">
                             Copy
                         </button>
@@ -97,22 +97,22 @@
     </div>
 
     <footer class="text-center mt-6">
-        <p class="text-sm text-gray-600 text-gray-400">
-            Developed By 
+        <p class="text-sm text-gray-600">
+            Developed By
             <a href="https://github.com/mahfuz-rahman007" target="_blank" class="text-blue-500">Mahfujur Rahman</a>
             @2024
         </p>
-        <p class="text-sm text-gray-600 text-gray-400">
-            <a href="https://www.linkedin.com/in/mahfuzur-rahman-44723728a/" target="_blank" class="text-blue-500">LinkedIn</a>
+        <p class="text-sm text-gray-600">
+            <a href="https://www.linkedin.com/in/mahfuzur-rahman-44723728a/" target="_blank"
+                class="text-blue-500">LinkedIn</a>
         </p>
     </footer>
 
     <script>
-        // Copy Short Url to Clipboard
         function copyToClipboard() {
             var copyText = document.getElementById("short_url");
             copyText.select();
-            copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+            copyText.setSelectionRange(0, 99999);
             navigator.clipboard.writeText(copyText.value);
         }
     </script>
