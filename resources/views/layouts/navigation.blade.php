@@ -94,7 +94,20 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('url.list')" :active="request()->routeIs('url.list')">
+                {{ __('Shortened Url List') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('url.all')" :active="request()->routeIs('url.all')">
+                {{ __('All Shortened Url List') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link  :href="'/'" :active="false">
+                {{ __('Create Shortened Url') }}
+            </x-responsive-nav-link>
         </div>
+
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200 border-gray-600">

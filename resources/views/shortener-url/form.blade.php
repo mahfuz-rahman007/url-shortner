@@ -32,16 +32,16 @@
 <body class="font-sans text-gray-900 antialiased bg-gray-100">
 
     <div class="relative w-3/4 mx-auto px-6">
-        <header class="grid grid-cols-1 items-center gap-2 py-10 lg:grid-cols-1">
-            <nav class="-mx-3 flex flex-1 justify-end">
+        <header class="grid grid-cols-1 items-center gap-2 py-8 lg:py-10 lg:grid-cols-1">
+            <nav class="-mx-3 flex flex-1 justify-center lg:justify-end">
                 @auth
                     <a href="{{ route('url.list') }}"
-                        class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+                        class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow text-sm md:text-lg">
                         View All Shortened URLs
                     </a>
                 @else
                     <a href="{{ route('login') }}"
-                        class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+                        class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow text-sm md:text-lg">
                         Login To Manage Shortened URLs
                     </a>
                 @endauth
@@ -49,14 +49,14 @@
         </header>
     </div>
 
-    <div class="flex flex-col sm:justify-center items-center">
+    <div class="flex flex-col sm:justify-center items-center mx-5">
 
         <div class="flex items-center gap-6">
             <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                <x-application-logo class="w-10 h-10 lg:w-20 lg:h-20 fill-current text-gray-500" />
             </a>
 
-            <h1 class="text-center mb-3 text-2xl">URL Shortener</h1>
+            <h1 class="text-center lg:mb-3 text-lg lg:text-2xl">URL Shortener</h1>
         </div>
 
         <div class="w-full sm:max-w-2xl mt-6 px-6 py-10 bg-white bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
